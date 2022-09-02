@@ -16,6 +16,7 @@ class MoviesVC: UIViewController {
     
     var textFieldPlaceholder = ""
     var movies: [Movie] = []
+    var filteredMovies = NSMutableOrderedSet()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class MoviesVC: UIViewController {
         configureTableView()
         createDismissKeyboardGesture()
         movies = CoreDataManager.shared.fetchMovie()
+        filteredMovies = NSMutableOrderedSet(array: movies.map { "\($0.title) \($0.year)" })
     }
     
     private func configureTitleTextField() {
@@ -76,20 +78,16 @@ class MoviesVC: UIViewController {
     private func inputValidationAndSaveMovie() {
         guard let title = titleTextField.text, let year = yearTextField.text else { return }
         
-        if title == "" || year == "" {
-            titleTextField.text = title
-            yearTextField.text = year
-            presentAlertOnMainThread(title: "Please fill out all fields.", message: nil)
-            return
+        CoreDataManager.shared.createMovie(title: title, year: Int(year) ?? 0)
+        movies = CoreDataManager.shared.fetchMovie()
+        filteredMovies = NSMutableOrderedSet(array: movies.map { "\($0.title) \($0.year)" })
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
         
-        if !movies.contains(where: { $0.title == title }) {
-            CoreDataManager.shared.createMovie(title: title, year: Int(year) ?? 0)
-            movies = CoreDataManager.shared.fetchMovie()
-            DispatchQueue.main.async { self.tableView.reloadData() }
-        } else {
-            presentAlertOnMainThread(title: "You've already added this movie.", message: nil)
-        }
+//        let indexPath = IndexPath(row: filteredMovies.count - 1, section: 0)
+//        self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
     private func configureTableView() {
@@ -98,12 +96,13 @@ class MoviesVC: UIViewController {
         tableView.dataSource = self
         tableView.register(MovieCell.self, forCellReuseIdentifier: MovieCell.reuseID)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        let padding: CGFloat = 10
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: 10),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            tableView.topAnchor.constraint(equalTo: addButton.bottomAnchor, constant: padding),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 10)
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: padding)
         ])
     }
     
@@ -117,23 +116,26 @@ class MoviesVC: UIViewController {
 extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return filteredMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseID, for: indexPath) as? MovieCell else { return UITableViewCell() }
-        let movie = movies[indexPath.row]
+        let movie = filteredMovies[indexPath.row]
         cell.set(with: movie)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else { return }
-        let movie = movies[indexPath.row]
         
-        self.movies.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
+        guard editingStyle == .delete else { return }
+        
+        let movie = movies[indexPath.row]
         CoreDataManager.shared.deleteMovie(movie: movie)
+        movies.remove(at: indexPath.row)
+        
+        filteredMovies.removeObject(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .left)
     }
 }
 

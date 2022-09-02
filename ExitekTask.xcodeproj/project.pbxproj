@@ -15,11 +15,11 @@
 		C325115028BFA89700152001 /* MoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325114F28BFA89700152001 /* MoviesVC.swift */; };
 		C325115428BFA8CE00152001 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115328BFA8CE00152001 /* MovieCell.swift */; };
 		C325115628BFA8DA00152001 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115528BFA8DA00152001 /* PersistenceManager.swift */; };
-		C325115928BFA9C900152001 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115728BFA9C900152001 /* Movie+CoreDataClass.swift */; };
-		C325115A28BFA9C900152001 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115828BFA9C900152001 /* Movie+CoreDataProperties.swift */; };
 		C325115C28BFB47A00152001 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115B28BFB47A00152001 /* UIViewController+Ext.swift */; };
 		C325115E28BFB72000152001 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115D28BFB72000152001 /* CustomTextField.swift */; };
 		C325116228BFBC8000152001 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325116128BFBC8000152001 /* CustomButton.swift */; };
+		C3D53C0F28C20F6E009E6117 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */; };
+		C3D53C1028C20F6E009E6117 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,11 +33,11 @@
 		C325114F28BFA89700152001 /* MoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVC.swift; sourceTree = "<group>"; };
 		C325115328BFA8CE00152001 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		C325115528BFA8DA00152001 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
-		C325115728BFA9C900152001 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C325115828BFA9C900152001 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C325115B28BFB47A00152001 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		C325115D28BFB72000152001 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C325116128BFBC8000152001 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,8 +161,8 @@
 		C325116C28BFCD5900152001 /* MovieCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				C325115728BFA9C900152001 /* Movie+CoreDataClass.swift */,
-				C325115828BFA9C900152001 /* Movie+CoreDataProperties.swift */,
+				C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */,
+				C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */,
 				C325114128BFA84200152001 /* ExitekTask.xcdatamodeld */,
 			);
 			path = MovieCoreData;
@@ -238,16 +238,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C325115928BFA9C900152001 /* Movie+CoreDataClass.swift in Sources */,
 				C325115E28BFB72000152001 /* CustomTextField.swift in Sources */,
 				C325115C28BFB47A00152001 /* UIViewController+Ext.swift in Sources */,
 				C325115628BFA8DA00152001 /* PersistenceManager.swift in Sources */,
 				C325114328BFA84200152001 /* ExitekTask.xcdatamodeld in Sources */,
-				C325115A28BFA9C900152001 /* Movie+CoreDataProperties.swift in Sources */,
 				C325115428BFA8CE00152001 /* MovieCell.swift in Sources */,
+				C3D53C1028C20F6E009E6117 /* Movie+CoreDataProperties.swift in Sources */,
 				C325116228BFBC8000152001 /* CustomButton.swift in Sources */,
 				C325115028BFA89700152001 /* MoviesVC.swift in Sources */,
 				C325113928BFA84200152001 /* AppDelegate.swift in Sources */,
+				C3D53C0F28C20F6E009E6117 /* Movie+CoreDataClass.swift in Sources */,
 				C325113B28BFA84200152001 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

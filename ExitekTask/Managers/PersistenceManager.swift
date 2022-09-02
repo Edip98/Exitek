@@ -13,10 +13,10 @@ class CoreDataManager {
     static let shared = CoreDataManager()
     
     lazy var mainContext: NSManagedObjectContext = {
-        return self.persistentConatainer.viewContext
+        return self.persistentContainer.viewContext
     }()
     
-    private lazy var persistentConatainer: NSPersistentContainer = {
+    private lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "ExitekTask")
         container.loadPersistentStores { storeDescription, error in
             if let error = error {
@@ -47,7 +47,7 @@ class CoreDataManager {
     
     func saveMovie() {
         guard mainContext.hasChanges else { return }
-        
+
         do {
             try mainContext.save()
         } catch let saveError {

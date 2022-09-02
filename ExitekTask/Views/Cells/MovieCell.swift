@@ -21,8 +21,8 @@ class MovieCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func set(with movie: Movie) {
-        movieNameAndYearLabel.text = "\(movie.title) \(String(movie.year))"
+    func set(with movie: Any) {
+        movieNameAndYearLabel.text = "\(movie)"
     }
     
     private func configure() {

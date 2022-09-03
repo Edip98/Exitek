@@ -28,7 +28,7 @@ class CoreDataManager {
     
     func fetchMovie() -> [Movie] {
         let fetchRequest = NSFetchRequest<Movie>(entityName: "Movie")
-        
+
         do {
             let movies = try mainContext.fetch(fetchRequest)
             return movies
@@ -55,8 +55,16 @@ class CoreDataManager {
         }
     }
     
-    func deleteMovie(movie: NSManagedObject) {
-        mainContext.delete(movie)
+    func deleteMovie(movie: NSManagedObject, title: String) {
+        let movies = fetchMovie()
+                
+        if movies.count > 0 {
+            movies.forEach { item in
+                if item.title == title {
+                    mainContext.delete(item)
+                }
+            }
+        }
         saveMovie()
     }
 }

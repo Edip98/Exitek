@@ -81,13 +81,7 @@ class MoviesVC: UIViewController {
         CoreDataManager.shared.createMovie(title: title, year: Int(year) ?? 0)
         movies = CoreDataManager.shared.fetchMovie()
         filteredMovies = NSMutableOrderedSet(array: movies.map { "\($0.title) \($0.year)" })
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        
-//        let indexPath = IndexPath(row: filteredMovies.count - 1, section: 0)
-//        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        tableView.reloadSections([0], with: .automatic)
     }
     
     private func configureTableView() {
@@ -126,17 +120,17 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        guard editingStyle == .delete else { return }
-        
-        let movie = movies[indexPath.row]
-        CoreDataManager.shared.deleteMovie(movie: movie)
-        movies.remove(at: indexPath.row)
-        
-        filteredMovies.removeObject(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .left)
-    }
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    
+            guard editingStyle == .delete else { return }
+    
+            let movie = movies[indexPath.row]
+            CoreDataManager.shared.deleteMovie(movie: movie, title: movie.title)
+    
+            movies.remove(at: indexPath.row)
+            filteredMovies.removeObject(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
+        }
 }
 
 

@@ -28,7 +28,7 @@ class CoreDataManager {
     
     func fetchMovie() -> [Movie] {
         let fetchRequest = NSFetchRequest<Movie>(entityName: "Movie")
-
+        
         do {
             let movies = try mainContext.fetch(fetchRequest)
             return movies
@@ -37,6 +37,7 @@ class CoreDataManager {
             return []
         }
     }
+
     
     func createMovie(title: String, year: Int) {
         let movie = NSEntityDescription.insertNewObject(forEntityName: "Movie", into: mainContext) as! Movie

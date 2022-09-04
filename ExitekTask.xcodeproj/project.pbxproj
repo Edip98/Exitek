@@ -18,6 +18,8 @@
 		C325115C28BFB47A00152001 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115B28BFB47A00152001 /* UIViewController+Ext.swift */; };
 		C325115E28BFB72000152001 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115D28BFB72000152001 /* CustomTextField.swift */; };
 		C325116228BFBC8000152001 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325116128BFBC8000152001 /* CustomButton.swift */; };
+		C39B176928C4740500916E62 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C39B176828C4740500916E62 /* Collections */; };
+		C39B176B28C4740500916E62 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = C39B176A28C4740500916E62 /* OrderedCollections */; };
 		C3D53C0F28C20F6E009E6117 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */; };
 		C3D53C1028C20F6E009E6117 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39B176B28C4740500916E62 /* OrderedCollections in Frameworks */,
+				C39B176928C4740500916E62 /* Collections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +188,10 @@
 			dependencies = (
 			);
 			name = ExitekTask;
+			packageProductDependencies = (
+				C39B176828C4740500916E62 /* Collections */,
+				C39B176A28C4740500916E62 /* OrderedCollections */,
+			);
 			productName = ExitekTask;
 			productReference = C325113528BFA84200152001 /* ExitekTask.app */;
 			productType = "com.apple.product-type.application";
@@ -212,6 +220,9 @@
 				Base,
 			);
 			mainGroup = C325112C28BFA84200152001;
+			packageReferences = (
+				C39B176728C4740500916E62 /* XCRemoteSwiftPackageReference "swift-collections" */,
+			);
 			productRefGroup = C325113628BFA84200152001 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -460,6 +471,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C39B176728C4740500916E62 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-collections.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C39B176828C4740500916E62 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C39B176728C4740500916E62 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		C39B176A28C4740500916E62 /* OrderedCollections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C39B176728C4740500916E62 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = OrderedCollections;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C325114128BFA84200152001 /* ExitekTask.xcdatamodeld */ = {

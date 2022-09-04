@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import OrderedCollections
 
 class MoviesVC: UIViewController {
     
@@ -15,8 +16,7 @@ class MoviesVC: UIViewController {
     let tableView = UITableView()
     
     var textFieldPlaceholder = ""
-    var movies: [Movie] = []
-    var filteredMovies = NSMutableOrderedSet()
+    var movies: OrderedSet<Movie> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,7 @@ class MoviesVC: UIViewController {
         configureAddButton()
         configureTableView()
         createDismissKeyboardGesture()
-        movies = CoreDataManager.shared.fetchMovie()
-        filteredMovies = NSMutableOrderedSet(array: movies.map { "\($0.title) \($0.year)" })
+        movies = OrderedSet(CoreDataManager.shared.fetchMovie())
     }
     
     private func configureTitleTextField() {
@@ -78,10 +77,21 @@ class MoviesVC: UIViewController {
     private func inputValidationAndSaveMovie() {
         guard let title = titleTextField.text, let year = yearTextField.text else { return }
         
+        if title == "" || year == "" {
+            titleTextField.text = title
+            yearTextField.text = year
+            presentAlertOnMainThread(title: "Please fill out all fields.", message: nil)
+            return
+        }
+
         CoreDataManager.shared.createMovie(title: title, year: Int(year) ?? 0)
-        movies = CoreDataManager.shared.fetchMovie()
-        filteredMovies = NSMutableOrderedSet(array: movies.map { "\($0.title) \($0.year)" })
+        movies = OrderedSet(CoreDataManager.shared.fetchMovie())
         tableView.reloadSections([0], with: .automatic)
+        
+//        let indexPath = IndexPath(row: movies.count - 1, section: 0)
+//        tableView.beginUpdates()
+//        tableView.insertRows(at: [indexPath], with: .automatic)
+//        tableView.endUpdates()
     }
     
     private func configureTableView() {
@@ -110,12 +120,12 @@ class MoviesVC: UIViewController {
 extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredMovies.count
+        return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseID, for: indexPath) as? MovieCell else { return UITableViewCell() }
-        let movie = filteredMovies[indexPath.row]
+        let movie = movies[indexPath.row]
         cell.set(with: movie)
         return cell
     }
@@ -128,7 +138,6 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
             CoreDataManager.shared.deleteMovie(movie: movie, title: movie.title)
     
             movies.remove(at: indexPath.row)
-            filteredMovies.removeObject(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)
         }
 }

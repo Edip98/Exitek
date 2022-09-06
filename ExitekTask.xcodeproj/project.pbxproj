@@ -9,37 +9,31 @@
 /* Begin PBXBuildFile section */
 		C325113928BFA84200152001 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325113828BFA84200152001 /* AppDelegate.swift */; };
 		C325113B28BFA84200152001 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325113A28BFA84200152001 /* SceneDelegate.swift */; };
-		C325114328BFA84200152001 /* ExitekTask.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C325114128BFA84200152001 /* ExitekTask.xcdatamodeld */; };
 		C325114528BFA84300152001 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C325114428BFA84300152001 /* Assets.xcassets */; };
 		C325114828BFA84300152001 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C325114628BFA84300152001 /* LaunchScreen.storyboard */; };
 		C325115028BFA89700152001 /* MoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325114F28BFA89700152001 /* MoviesVC.swift */; };
 		C325115428BFA8CE00152001 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115328BFA8CE00152001 /* MovieCell.swift */; };
-		C325115628BFA8DA00152001 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115528BFA8DA00152001 /* PersistenceManager.swift */; };
 		C325115C28BFB47A00152001 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115B28BFB47A00152001 /* UIViewController+Ext.swift */; };
 		C325115E28BFB72000152001 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115D28BFB72000152001 /* CustomTextField.swift */; };
 		C325116228BFBC8000152001 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325116128BFBC8000152001 /* CustomButton.swift */; };
+		C330699128C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330699028C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift */; };
 		C39B176928C4740500916E62 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C39B176828C4740500916E62 /* Collections */; };
 		C39B176B28C4740500916E62 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = C39B176A28C4740500916E62 /* OrderedCollections */; };
-		C3D53C0F28C20F6E009E6117 /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */; };
-		C3D53C1028C20F6E009E6117 /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C325113528BFA84200152001 /* ExitekTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExitekTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C325113828BFA84200152001 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C325113A28BFA84200152001 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C325114228BFA84200152001 /* ExitekTask.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExitekTask.xcdatamodel; sourceTree = "<group>"; };
 		C325114428BFA84300152001 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C325114728BFA84300152001 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C325114928BFA84300152001 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C325114F28BFA89700152001 /* MoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVC.swift; sourceTree = "<group>"; };
 		C325115328BFA8CE00152001 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		C325115528BFA8DA00152001 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 		C325115B28BFB47A00152001 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		C325115D28BFB72000152001 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C325116128BFBC8000152001 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C330699028C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesVC+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +70,6 @@
 			children = (
 				C325116928BFCCEC00152001 /* Extensions */,
 				C325116A28BFCD3D00152001 /* Support */,
-				C325116628BFCCAD00152001 /* Managers */,
-				C325116B28BFCD5200152001 /* Models */,
 				C325116428BFCC9B00152001 /* Views */,
 				C325116328BFCC7000152001 /* ViewControllers */,
 			);
@@ -110,14 +102,6 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		C325116628BFCCAD00152001 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				C325115528BFA8DA00152001 /* PersistenceManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 		C325116728BFCCD000152001 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				C325115B28BFB47A00152001 /* UIViewController+Ext.swift */,
+				C330699028C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -152,24 +137,6 @@
 				C325114928BFA84300152001 /* Info.plist */,
 			);
 			path = Support;
-			sourceTree = "<group>";
-		};
-		C325116B28BFCD5200152001 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				C325116C28BFCD5900152001 /* MovieCoreData */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		C325116C28BFCD5900152001 /* MovieCoreData */ = {
-			isa = PBXGroup;
-			children = (
-				C3D53C0D28C20F6E009E6117 /* Movie+CoreDataClass.swift */,
-				C3D53C0E28C20F6E009E6117 /* Movie+CoreDataProperties.swift */,
-				C325114128BFA84200152001 /* ExitekTask.xcdatamodeld */,
-			);
-			path = MovieCoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,14 +218,11 @@
 			files = (
 				C325115E28BFB72000152001 /* CustomTextField.swift in Sources */,
 				C325115C28BFB47A00152001 /* UIViewController+Ext.swift in Sources */,
-				C325115628BFA8DA00152001 /* PersistenceManager.swift in Sources */,
-				C325114328BFA84200152001 /* ExitekTask.xcdatamodeld in Sources */,
+				C330699128C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift in Sources */,
 				C325115428BFA8CE00152001 /* MovieCell.swift in Sources */,
-				C3D53C1028C20F6E009E6117 /* Movie+CoreDataProperties.swift in Sources */,
 				C325116228BFBC8000152001 /* CustomButton.swift in Sources */,
 				C325115028BFA89700152001 /* MoviesVC.swift in Sources */,
 				C325113928BFA84200152001 /* AppDelegate.swift in Sources */,
-				C3D53C0F28C20F6E009E6117 /* Movie+CoreDataClass.swift in Sources */,
 				C325113B28BFA84200152001 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,19 +459,6 @@
 			productName = OrderedCollections;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		C325114128BFA84200152001 /* ExitekTask.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C325114228BFA84200152001 /* ExitekTask.xcdatamodel */,
-			);
-			currentVersion = C325114228BFA84200152001 /* ExitekTask.xcdatamodel */;
-			path = ExitekTask.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C325112D28BFA84200152001 /* Project object */;
 }

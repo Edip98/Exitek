@@ -8,15 +8,19 @@
 import UIKit
 import OrderedCollections
 
+
 class MoviesVC: UIViewController {
+    
+    private let defaults = UserDefaults.standard
+    enum Keys { static let favorites = "favorites" }
     
     let titleTextField = CustomTextField(placeholder: "Title")
     let yearTextField = CustomTextField(placeholder: "Year")
     let addButton = CustomButton(backgroundColor: .systemBlue, title: "Add")
     let tableView = UITableView()
     
+    var movies: OrderedSet<String> = []
     var textFieldPlaceholder = ""
-    var movies: OrderedSet<Movie> = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +30,9 @@ class MoviesVC: UIViewController {
         configureAddButton()
         configureTableView()
         createDismissKeyboardGesture()
-        movies = OrderedSet(CoreDataManager.shared.fetchMovie())
+        if let data = defaults.object(forKey: Keys.favorites) as? [String] {
+            movies.append(contentsOf: data)
+        }
     }
     
     private func configureTitleTextField() {
@@ -69,29 +75,35 @@ class MoviesVC: UIViewController {
     }
     
     @objc func addButtonTapped() {
-        inputValidationAndSaveMovie()
-        titleTextField.text = ""
-        yearTextField.text = ""
-    }
-    
-    private func inputValidationAndSaveMovie() {
         guard let title = titleTextField.text, let year = yearTextField.text else { return }
         
         if title == "" || year == "" {
-            titleTextField.text = title
-            yearTextField.text = year
             presentAlertOnMainThread(title: "Please fill out all fields.", message: nil)
             return
         }
-
-        CoreDataManager.shared.createMovie(title: title, year: Int(year) ?? 0)
-        movies = OrderedSet(CoreDataManager.shared.fetchMovie())
-        tableView.reloadSections([0], with: .automatic)
         
-//        let indexPath = IndexPath(row: movies.count - 1, section: 0)
-//        tableView.beginUpdates()
-//        tableView.insertRows(at: [indexPath], with: .automatic)
-//        tableView.endUpdates()
+        if !movies.contains("\(title) \(year)") {
+            
+            movies.append("\(title) \(year)")
+            defaults.set(Array(movies), forKey: Keys.favorites)
+            
+            let indexPath = IndexPath(row: movies.count - 1, section: 0)
+            tableView.beginUpdates()
+            tableView.insertRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            
+            clearTextFields()
+        } else {
+            movies.append("\(title) \(year)")
+            clearTextFields()
+        }
+    }
+    
+    private func clearTextFields() {
+        titleTextField.text = ""
+        yearTextField.text = ""
+        yearTextField.resignFirstResponder()
+        titleTextField.resignFirstResponder()
     }
     
     private func configureTableView() {
@@ -130,36 +142,12 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    
-            guard editingStyle == .delete else { return }
-    
-            let movie = movies[indexPath.row]
-            CoreDataManager.shared.deleteMovie(movie: movie, title: movie.title)
-    
-            movies.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .left)
-        }
-}
-
-
-extension MoviesVC: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let nextField = textField.superview?.viewWithTag(textField.tag + 1) as? UITextField {
-            nextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        return false
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textFieldPlaceholder = textField.placeholder ?? ""
-        textField.placeholder = ""
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.placeholder = textFieldPlaceholder
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard editingStyle == .delete else { return }
+        
+        movies.remove(at: indexPath.row)
+        defaults.set(Array(movies), forKey: Keys.favorites)
+        tableView.deleteRows(at: [indexPath], with: .left)
     }
 }

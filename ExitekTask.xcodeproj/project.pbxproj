@@ -17,6 +17,8 @@
 		C325115E28BFB72000152001 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325115D28BFB72000152001 /* CustomTextField.swift */; };
 		C325116228BFBC8000152001 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C325116128BFBC8000152001 /* CustomButton.swift */; };
 		C330699128C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C330699028C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift */; };
+		C37F0A6428C8FF3000FA6A6B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F0A6328C8FF3000FA6A6B /* Movie.swift */; };
+		C37F0A6728C91B4600FA6A6B /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37F0A6628C91B4600FA6A6B /* PersistenceManager.swift */; };
 		C39B176928C4740500916E62 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = C39B176828C4740500916E62 /* Collections */; };
 		C39B176B28C4740500916E62 /* OrderedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = C39B176A28C4740500916E62 /* OrderedCollections */; };
 /* End PBXBuildFile section */
@@ -34,6 +36,8 @@
 		C325115D28BFB72000152001 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C325116128BFBC8000152001 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		C330699028C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesVC+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		C37F0A6328C8FF3000FA6A6B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		C37F0A6628C91B4600FA6A6B /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			children = (
 				C325116928BFCCEC00152001 /* Extensions */,
 				C325116A28BFCD3D00152001 /* Support */,
+				C37F0A6528C91B3F00FA6A6B /* PersistenceManager */,
+				C37F0A6228C8FF1A00FA6A6B /* Model */,
 				C325116428BFCC9B00152001 /* Views */,
 				C325116328BFCC7000152001 /* ViewControllers */,
 			);
@@ -137,6 +143,22 @@
 				C325114928BFA84300152001 /* Info.plist */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		C37F0A6228C8FF1A00FA6A6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C37F0A6328C8FF3000FA6A6B /* Movie.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C37F0A6528C91B3F00FA6A6B /* PersistenceManager */ = {
+			isa = PBXGroup;
+			children = (
+				C37F0A6628C91B4600FA6A6B /* PersistenceManager.swift */,
+			);
+			path = PersistenceManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,7 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C325115E28BFB72000152001 /* CustomTextField.swift in Sources */,
+				C37F0A6728C91B4600FA6A6B /* PersistenceManager.swift in Sources */,
 				C325115C28BFB47A00152001 /* UIViewController+Ext.swift in Sources */,
+				C37F0A6428C8FF3000FA6A6B /* Movie.swift in Sources */,
 				C330699128C7647400C5FBAA /* MoviesVC+UITextFieldDelegate.swift in Sources */,
 				C325115428BFA8CE00152001 /* MovieCell.swift in Sources */,
 				C325116228BFBC8000152001 /* CustomButton.swift in Sources */,

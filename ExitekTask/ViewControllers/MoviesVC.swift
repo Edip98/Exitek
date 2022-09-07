@@ -11,15 +11,12 @@ import OrderedCollections
 
 class MoviesVC: UIViewController {
     
-    private let defaults = UserDefaults.standard
-    enum Keys { static let favorites = "favorites" }
-    
     let titleTextField = CustomTextField(placeholder: "Title")
     let yearTextField = CustomTextField(placeholder: "Year")
     let addButton = CustomButton(backgroundColor: .systemBlue, title: "Add")
     let tableView = UITableView()
     
-    var movies: OrderedSet<String> = []
+    var movies: OrderedSet<Movie> = []
     var textFieldPlaceholder = ""
     
     override func viewDidLoad() {
@@ -28,11 +25,9 @@ class MoviesVC: UIViewController {
         configureTitleTextField()
         configureYearTextFieldd()
         configureAddButton()
+        movies.append(contentsOf: PersistenceManager.shared.retriveFavorites())
         configureTableView()
         createDismissKeyboardGesture()
-        if let data = defaults.object(forKey: Keys.favorites) as? [String] {
-            movies.append(contentsOf: data)
-        }
     }
     
     private func configureTitleTextField() {
@@ -82,10 +77,12 @@ class MoviesVC: UIViewController {
             return
         }
         
-        if !movies.contains("\(title) \(year)") {
+        let movie = Movie(title: title, year: Int(year)!)
+        
+        if !movies.contains(movie) {
             
-            movies.append("\(title) \(year)")
-            defaults.set(Array(movies), forKey: Keys.favorites)
+            movies.append(movie)
+            PersistenceManager.shared.save(favorites: Array(movies))
             
             let indexPath = IndexPath(row: movies.count - 1, section: 0)
             tableView.beginUpdates()
@@ -94,7 +91,7 @@ class MoviesVC: UIViewController {
             
             clearTextFields()
         } else {
-            movies.append("\(title) \(year)")
+            movies.append(movie)
             clearTextFields()
         }
     }
@@ -147,7 +144,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         guard editingStyle == .delete else { return }
         
         movies.remove(at: indexPath.row)
-        defaults.set(Array(movies), forKey: Keys.favorites)
         tableView.deleteRows(at: [indexPath], with: .left)
+        PersistenceManager.shared.save(favorites: Array(movies))
     }
 }
